@@ -36,6 +36,7 @@ def display_controls():
 def main():
 
     cast = 0
+    waiting = 0
 
     lis = Listener(on_press=on_press)
     lis.start()
@@ -43,22 +44,31 @@ def main():
     display_controls()
     while running:
         if not pause:
-            if cast == 0 and pyautogui.locateOnScreen('fish.png', confidence = 0.5) != None:
+            if cast == 0 and pyautogui.locateOnScreen('fish.png', confidence = 0.4) != None:
+                time.sleep(2)
                 pydirectinput.keyDown('e')
                 pydirectinput.keyUp('e')
                 cast = 1
                 print('The rod should be casted')
                 time.sleep(3)
-                
-            if cast == 1 and pyautogui.locateOnScreen('point.png', confidence = 0.8) != None:
-                print('Yeeting the fish')
-                pydirectinput.keyDown('e')
-                pydirectinput.keyUp('e')
-                time.sleep(7)
-                print('Grats (hopefully)')
-                cast = 0
-            else:
-                print('Waiting for a bite...')
+
+            if cast == 1:
+                if pyautogui.locateOnScreen('point.png', confidence = 0.7) != None:
+                    print('Yeeting the fish')
+                    pydirectinput.keyDown('e')
+                    pydirectinput.keyUp('e')
+                    time.sleep(9)
+                    print('Grats (hopefully)')
+                    cast = 0
+                    waiting = 0
+
+
+                else:
+                    waiting += 1
+                    print(waiting)
+                    if waiting > 100:
+                        cast = 0
+                        waiting = 0
             lis.stop()
 
 if __name__ == "__main__":
