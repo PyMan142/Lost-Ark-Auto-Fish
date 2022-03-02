@@ -44,8 +44,8 @@ def main():
     display_controls()
     while running:
         if not pause:
-            if cast == 0 and pyautogui.locateOnScreen('fish.png', confidence = 0.4) != None:
-                time.sleep(2)
+            if cast == 0:
+                time.sleep(5)
                 pydirectinput.keyDown('e')
                 pydirectinput.keyUp('e')
                 cast = 1
