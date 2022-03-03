@@ -53,7 +53,7 @@ def main():
                 time.sleep(3)
 
             if cast == 1:
-                if pyautogui.locateOnScreen('point.png', confidence = 0.7) != None:
+                if pyautogui.locateOnScreen('point.png', confidence = 0.8) != None:
                     print('Yeeting the fish')
                     pydirectinput.keyDown('e')
                     pydirectinput.keyUp('e')
