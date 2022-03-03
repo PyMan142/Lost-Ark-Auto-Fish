@@ -1,6 +1,7 @@
 # Lost-Ark-Auto-Fish
 A very simple python scipt, afk fish to your hearts content
 
+You'll need a few imports as well
 
 Start the script
 Put your cursor over the fishing spot
